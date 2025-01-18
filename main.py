@@ -1,5 +1,13 @@
-def dec_to_bin():
-    io = input("Bitte eine Zahl zwischen 0 und 255 eingeben: ")
+def checkArgs(arg):
+    if not arg:
+        return False
+    return True
+
+def dec_to_bin(*args):
+    if checkArgs(args):
+        io = args[0]
+    else:
+        io = input("Bitte eine Zahl zwischen 0 und 255 eingeben: ")
     try:
         dec = int(io)
     except:
@@ -14,10 +22,13 @@ def dec_to_bin():
     else:
         endString = str(0)
     endString = endString.zfill(8)
-    print(endString)
+    return endString
 
-def bin_to_dec():
-    binStr = input("Bitte geben Sie eine Binärzahl ein: ")
+def bin_to_dec(*args):
+    if checkArgs(args):
+        binStr = str(args[0])
+    else:
+        binStr = input("Bitte geben Sie eine Binärzahl ein: ")
     if all(char in '01' for char in binStr):
         i = len(binStr)
         decNum = 0
@@ -27,10 +38,10 @@ def bin_to_dec():
             if int(binStr[i]) == 1:
                 decNum += 2**exponent
             exponent += 1
-        print(decNum)
+        return decNum
     else:
         print("Ungültige Eingabe. Bitte geben Sie eine gültige Binärzahl ein.")
 
 if __name__ == '__main__':
-    #dec_to_bin()
-    bin_to_dec()
+    #print(dec_to_bin())
+    print(bin_to_dec())
