@@ -44,4 +44,5 @@ def bin_to_dec(*args):
 
 if __name__ == '__main__':
     #print(dec_to_bin())
+    
     print(bin_to_dec())
