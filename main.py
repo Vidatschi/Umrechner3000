@@ -140,16 +140,24 @@ def consoleMain():
             print(bin_to_hex())
         elif dest == "DEZ" or dest == "DEC" or dest == "DEZIMAL":
             print(bin_to_dec())
+        else:
+            print("Bitte erneut versuchen.")
     elif source == "DEZ" or source == "DEC" or source == "DEZIMAL":
         if dest == "HEXA" or dest == "HEX" or dest == "HEXADEZIMAL" or dest == "HEXADECIMAL":
             print(bin_to_hex(dec_to_bin()))
         elif dest == "BINÄR" or dest == "BIN":
             print(dec_to_bin())
+        else:
+            print("Bitte erneut versuchen.")
     elif source == "HEXA" or source == "HEX" or source == "HEXADEZIMAL"  or source == "HEXADECIMAL":
         if dest == "BINÄR" or dest == "BIN":
             print(hex_to_bin())
         elif dest == "DEZ" or dest == "DEC" or dest == "DEZIMAL":
             print(bin_to_dec(hex_to_bin()))
+        else:
+            print("Bitte erneut versuchen.")
+    else:
+        print("Bitte erneut versuchen.")
 
 if __name__ == '__main__':
     #print(dec_to_bin())
