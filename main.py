@@ -9,6 +9,9 @@ def getValidDec(number):
     except:
         print("Ungültige Eingabe.")
         exit()
+    if dec < 0:
+        print("Ungültige Eingabe.")
+        exit()
     return dec
 
 def checkValidBin(binStr):
@@ -57,9 +60,10 @@ def bin_to_hex(*args):
     else:
         binStr = input("Bitte geben Sie eine Binärzahl ein: ")
     checkValidBin(binStr)
+
     
 
 if __name__ == '__main__':
     #print(dec_to_bin())
-    print(bin_to_dec())
-    #print(bin_to_hex())
+    #print(bin_to_dec())
+    print(bin_to_hex())
