@@ -136,16 +136,16 @@ def consoleMain():
     source = input("Welches Zahlensystem wollen Sie konvertieren?: ").upper().strip()
     dest = input("In welches Zahlensystem wollen Sie konvertieren?: ").upper().strip()
     if source == "BINÄR" or source == "BIN":
-        if dest == "HEXA" or dest == "HEX" or dest == "HEXADEZIMAL":
+        if dest == "HEXA" or dest == "HEX" or dest == "HEXADEZIMAL" or dest == "HEXADECIMAL":
             print(bin_to_hex())
         elif dest == "DEZ" or dest == "DEC" or dest == "DEZIMAL":
             print(bin_to_dec())
     elif source == "DEZ" or source == "DEC" or source == "DEZIMAL":
-        if dest == "HEXA" or dest == "HEX" or dest == "HEXADEZIMAL":
+        if dest == "HEXA" or dest == "HEX" or dest == "HEXADEZIMAL" or dest == "HEXADECIMAL":
             print(bin_to_hex(dec_to_bin()))
         elif dest == "BINÄR" or dest == "BIN":
             print(dec_to_bin())
-    elif source == "HEXA" or source == "HEX" or source == "HEXADEZIMAL":
+    elif source == "HEXA" or source == "HEX" or source == "HEXADEZIMAL"  or source == "HEXADECIMAL":
         if dest == "BINÄR" or dest == "BIN":
             print(hex_to_bin())
         elif dest == "DEZ" or dest == "DEC" or dest == "DEZIMAL":
