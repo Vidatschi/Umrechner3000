@@ -3,16 +3,26 @@ def checkArgs(arg):
         return False
     return True
 
+def getValidDec(number):
+    try:
+        dec = int(number)
+    except:
+        print("Ungültige Eingabe.")
+        exit()
+    return dec
+
+def checkValidBin(binStr):
+    if all(char in '01' for char in binStr):
+        return
+    print("Ungültige Eingabe.")
+    exit()
+
 def dec_to_bin(*args):
     if checkArgs(args):
-        io = args[0]
+        decStr = args[0]
     else:
-        io = input("Bitte eine Zahl zwischen 0 und 255 eingeben: ")
-    try:
-        dec = int(io)
-    except:
-        print("Eine Zahl zwischen 0 und 255!")
-        exit()
+        decStr = input("Bitte geben Sie eine Dezimalzahl größer/gleich 0 ein: ")
+    dec = getValidDec(decStr)
     endString = ""
     if dec != 0:
         while dec != 0:
@@ -29,19 +39,27 @@ def bin_to_dec(*args):
         binStr = str(args[0])
     else:
         binStr = input("Bitte geben Sie eine Binärzahl ein: ")
-    if all(char in '01' for char in binStr):
-        i = len(binStr)
-        decNum = 0
-        exponent = 0
-        while i != 0:
-            i -= 1
-            if int(binStr[i]) == 1:
-                decNum += 2**exponent
-            exponent += 1
-        return decNum
+    checkValidBin(binStr)
+    i = len(binStr)
+    decNum = 0
+    exponent = 0
+    while i != 0:
+        i -= 1
+        if int(binStr[i]) == 1:
+            decNum += 2**exponent
+        exponent += 1
+    return decNum
+
+
+def bin_to_hex(*args):
+    if checkArgs(args):
+        binStr = args[0]
     else:
-        print("Ungültige Eingabe. Bitte geben Sie eine gültige Binärzahl ein.")
+        binStr = input("Bitte geben Sie eine Binärzahl ein: ")
+    checkValidBin(binStr)
+    
 
 if __name__ == '__main__':
     #print(dec_to_bin())
     print(bin_to_dec())
+    #print(bin_to_hex())
