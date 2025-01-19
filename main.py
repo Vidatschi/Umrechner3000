@@ -115,6 +115,8 @@ def bin_to_hex(*args):
             hexNum = hexConv(tempNum)+ hexNum
         else:
             hexNum = str(tempNum) + hexNum
+    if hexNum[0] == "0":
+        hexNum = hexNum[-1:]
     return hexNum
 
 def hex_to_bin(*args):
@@ -130,8 +132,28 @@ def hex_to_bin(*args):
         binNum = binConv(hexSub) + binNum
     return binNum
 
+def consoleMain():
+    source = input("Welches Zahlensystem wollen Sie konvertieren?: ").upper().strip()
+    dest = input("In welches Zahlensystem wollen Sie konvertieren?: ").upper().strip()
+    if source == "BINÄR" or source == "BIN":
+        if dest == "HEXA" or dest == "HEX" or dest == "HEXADEZIMAL":
+            print(bin_to_hex())
+        elif dest == "DEZ" or dest == "DEC" or dest == "DEZIMAL":
+            print(bin_to_dec())
+    elif source == "DEZ" or source == "DEC" or source == "DEZIMAL":
+        if dest == "HEXA" or dest == "HEX" or dest == "HEXADEZIMAL":
+            print(bin_to_hex(dec_to_bin()))
+        elif dest == "BINÄR" or dest == "BIN":
+            print(dec_to_bin())
+    elif source == "HEXA" or source == "HEX" or source == "HEXADEZIMAL":
+        if dest == "BINÄR" or dest == "BIN":
+            print(hex_to_bin())
+        elif dest == "DEZ" or dest == "DEC" or dest == "DEZIMAL":
+            print(bin_to_dec(hex_to_bin()))
+
 if __name__ == '__main__':
     #print(dec_to_bin())
     #print(bin_to_dec())
     #print(bin_to_hex())
-    print(hex_to_bin())
+    #print(hex_to_bin())
+    consoleMain()
