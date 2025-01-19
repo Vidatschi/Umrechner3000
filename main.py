@@ -48,7 +48,7 @@ def decToBinConv(dec):
         endString = str(0)
     return endString
 
-def hexConv(number):
+def hexCheck(number):
     decNum = int(number)
     if decNum == 10:
         return "A"
@@ -63,7 +63,7 @@ def hexConv(number):
     elif decNum == 15:
         return "F"
 
-def binConv(character):
+def hexToBinConv(character):
     try:
         number = int(character)
         return decToBinConv(number).zfill(4)
@@ -112,7 +112,7 @@ def bin_to_hex(*args):
         binStr = binStr[:-4]
         tempNum = binToDecConv(binSub)
         if tempNum > 9:
-            hexNum = hexConv(tempNum)+ hexNum
+            hexNum = hexCheck(tempNum)+ hexNum
         else:
             hexNum = str(tempNum) + hexNum
     if hexNum[0] == "0":
@@ -129,7 +129,7 @@ def hex_to_bin(*args):
     while len(hexStr) > 0:
         hexSub = hexStr[-1:]
         hexStr = hexStr [:-1]
-        binNum = binConv(hexSub) + binNum
+        binNum = hexToBinConv(hexSub) + binNum
     return binNum
 
 def consoleMain():
