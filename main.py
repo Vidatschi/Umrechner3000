@@ -20,6 +20,32 @@ def checkValidBin(binStr):
     print("Ungültige Eingabe.")
     exit()
 
+def binToNumberConv(binStr):
+    i = len(binStr)
+    decNum = 0
+    exponent = 0
+    while i != 0:
+        i -= 1
+        if int(binStr[i]) == 1:
+            decNum += 2**exponent
+        exponent += 1
+    return decNum
+
+def hexConv(number):
+    decNum = int(number)
+    if decNum == 10:
+        return "A"
+    elif decNum == 11:
+        return "B"
+    elif decNum == 12:
+        return "C"
+    elif decNum == 13:
+        return "D"
+    elif decNum == 14:
+        return "E"
+    elif decNum == 15:
+        return "F"
+
 def dec_to_bin(*args):
     if checkArgs(args):
         decStr = args[0]
@@ -43,15 +69,7 @@ def bin_to_dec(*args):
     else:
         binStr = input("Bitte geben Sie eine Binärzahl ein: ")
     checkValidBin(binStr)
-    i = len(binStr)
-    decNum = 0
-    exponent = 0
-    while i != 0:
-        i -= 1
-        if int(binStr[i]) == 1:
-            decNum += 2**exponent
-        exponent += 1
-    return decNum
+    return binToNumberConv(binStr)
 
 
 def bin_to_hex(*args):
@@ -60,8 +78,17 @@ def bin_to_hex(*args):
     else:
         binStr = input("Bitte geben Sie eine Binärzahl ein: ")
     checkValidBin(binStr)
+    hexNum = ""
+    while len(binStr) > 0:
+        binSub = binStr[-4:]
+        binStr = binStr[:-4]
+        tempNum = binToNumberConv(binSub)
+        if tempNum > 9:
+            hexNum = hexConv(tempNum)+ hexNum
+        else:
+            hexNum = str(tempNum) + hexNum
+    return hexNum
 
-    
 
 if __name__ == '__main__':
     #print(dec_to_bin())
