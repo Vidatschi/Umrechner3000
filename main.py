@@ -3,6 +3,7 @@ def checkArgs(arg):
         return False
     return True
 
+
 def getValidDec(number):
     try:
         dec = int(number)
@@ -14,17 +15,20 @@ def getValidDec(number):
         exit()
     return dec
 
+
 def checkValidBin(binStr):
     if all(char in '01' for char in binStr):
         return
     print("Ungültige Eingabe.")
     exit()
 
+
 def checkValidHex(hexStr):
     if all(char in '0123456789ABCDEFabcdef' for char in hexStr):
         return
     print("Ungültige Eingabe.")
     exit()
+
 
 def binToDecConv(binStr):
     i = len(binStr)
@@ -33,9 +37,10 @@ def binToDecConv(binStr):
     while i != 0:
         i -= 1
         if int(binStr[i]) == 1:
-            decNum += 2**exponent
+            decNum += 2 ** exponent
         exponent += 1
     return decNum
+
 
 def decToBinConv(dec):
     endString = ""
@@ -47,6 +52,7 @@ def decToBinConv(dec):
     else:
         endString = str(0)
     return endString
+
 
 def hexCheck(number):
     decNum = int(number)
@@ -62,6 +68,7 @@ def hexCheck(number):
         return "E"
     elif decNum == 15:
         return "F"
+
 
 def hexToBinConv(character):
     try:
@@ -82,6 +89,7 @@ def hexToBinConv(character):
         elif character == "F":
             return "1111"
 
+
 def dec_to_bin(*args):
     if checkArgs(args):
         decStr = args[0]
@@ -91,9 +99,10 @@ def dec_to_bin(*args):
     endString = decToBinConv(dec).zfill(8)
     return endString
 
+
 def bin_to_dec(*args):
     if checkArgs(args):
-        binStr = str(args[0])
+        binStr = str(args[0]).strip()
     else:
         binStr = input("Bitte geben Sie eine Binärzahl ein: ")
     checkValidBin(binStr)
@@ -112,12 +121,13 @@ def bin_to_hex(*args):
         binStr = binStr[:-4]
         tempNum = binToDecConv(binSub)
         if tempNum > 9:
-            hexNum = hexCheck(tempNum)+ hexNum
+            hexNum = hexCheck(tempNum) + hexNum
         else:
             hexNum = str(tempNum) + hexNum
     if hexNum[0] == "0":
         hexNum = hexNum[-1:]
     return hexNum
+
 
 def hex_to_bin(*args):
     if checkArgs(args):
@@ -128,9 +138,12 @@ def hex_to_bin(*args):
     binNum = ""
     while len(hexStr) > 0:
         hexSub = hexStr[-1:]
-        hexStr = hexStr [:-1]
-        binNum = hexToBinConv(hexSub) + binNum
+        hexStr = hexStr[:-1]
+        binNum = hexToBinConv(hexSub) + " " + binNum
+    if binNum.count(" ") % 2 != 0:
+        binNum = "0000 " + binNum
     return binNum
+
 
 def consoleMain():
     source = input("Welches Zahlensystem wollen Sie konvertieren?: ").upper().strip()
@@ -149,7 +162,7 @@ def consoleMain():
             print(dec_to_bin())
         else:
             print("Bitte erneut versuchen.")
-    elif source == "HEXA" or source == "HEX" or source == "HEXADEZIMAL"  or source == "HEXADECIMAL":
+    elif source == "HEXA" or source == "HEX" or source == "HEXADEZIMAL" or source == "HEXADECIMAL":
         if dest == "BINÄR" or dest == "BIN":
             print(hex_to_bin())
         elif dest == "DEZ" or dest == "DEC" or dest == "DEZIMAL":
@@ -159,9 +172,10 @@ def consoleMain():
     else:
         print("Bitte erneut versuchen.")
 
+
 if __name__ == '__main__':
-    #print(dec_to_bin())
-    #print(bin_to_dec())
-    #print(bin_to_hex())
-    #print(hex_to_bin())
+    # print(dec_to_bin())
+    # print(bin_to_dec())
+    # print(bin_to_hex())
+    # print(hex_to_bin())
     consoleMain()
