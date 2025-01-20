@@ -102,7 +102,7 @@ def dec_to_bin(*args):
 
 def bin_to_dec(*args):
     if checkArgs(args):
-        binStr = str(args[0]).strip()
+        binStr = str(args[0]).replace(" ", "")
     else:
         binStr = input("Bitte geben Sie eine Binärzahl ein: ")
     checkValidBin(binStr)
