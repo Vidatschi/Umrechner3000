@@ -21,7 +21,7 @@ def guiMain():
         rightLabelField.config(state=tk.NORMAL)
         source = variableLeft.get()
         dest = variableRight.get()
-        leftEntry = leftLabelField.get()
+        leftEntry = leftLabelField.get().replace(" ", "")
         if leftEntry == "":
             leftEntry = "0"
 
