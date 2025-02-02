@@ -125,6 +125,7 @@ def bin_to_hex(*args):
                 hexNum = hexCheck(tempNum) + hexNum
             else:
                 hexNum = str(tempNum) + hexNum
+        hexNum = hexNum.lstrip("0")
         return hexNum
     else:
         return "Ungültige Eingabe."
