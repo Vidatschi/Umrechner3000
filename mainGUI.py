@@ -22,6 +22,8 @@ def guiMain():
         source = variableLeft.get()
         dest = variableRight.get()
         leftEntry = leftLabelField.get()
+        if leftEntry == "":
+            leftEntry = "0"
 
         if source == "Binär":
             if dest == "Hexadezimal":
