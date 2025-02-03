@@ -87,7 +87,7 @@ def guiMain():
     rightLabelField.config(state=tk.DISABLED)
     rightLabelField.grid(column=2, row=1, padx=10, pady=10)
 
-    enterButton = tk.Button(root, text="Umrechnen!", command=guiEval)
+    enterButton = tk.Button(root, text="Umrechnen!", command=guiEval, height=2, width=15)
     enterButton.grid(column=1, row=3, padx=0, pady=10)
     enterButton.config(
         activebackground="LIGHTGREY"
