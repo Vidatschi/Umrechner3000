@@ -45,6 +45,9 @@ def decToBinConv(dec):
             rest = dec % 2
             endString = str(rest) + endString
             dec = dec // 2
+            endStringTemp = endString.replace(" ", "")
+            if len(endStringTemp) % 4 == 0:
+                endString = " " + endString
     else:
         endString = str(0)
     return endString
@@ -93,7 +96,9 @@ def dec_to_bin(*args):
         decStr = input("Bitte geben Sie eine Dezimalzahl größer/gleich 0 ein: ").replace(" ", "")
     dec = getValidDec(decStr)
     if dec != "Ungültige Eingabe.":
-        endString = decToBinConv(dec).zfill(8)
+        endString = decToBinConv(dec)
+        while len(endString.replace(" ", "")) % 4 != 0:
+            endString = "0" + endString
         return endString
     else:
         return "Ungültige Eingabe."
@@ -112,7 +117,7 @@ def bin_to_dec(*args):
 
 def bin_to_hex(*args):
     if checkArgs(args):
-        binStr = args[0]
+        binStr = args[0].replace(" ", "")
     else:
         binStr = input("Bitte geben Sie eine Binärzahl ein: ").replace(" ", "")
     if checkValidBin(binStr) != "Ungültige Eingabe.":
