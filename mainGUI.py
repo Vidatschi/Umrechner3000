@@ -71,7 +71,8 @@ def guiMain():
     optionLeft.config(
         indicatoron=0,
         image=caret_down,
-        compound=tk.RIGHT
+        compound=tk.RIGHT,
+        activebackground="LIGHTGREY"
     )
     optionLeft.grid(column=0, row=0, padx=0, pady=10)
 
@@ -82,7 +83,8 @@ def guiMain():
     optionRight.config(
         indicatoron=0,
         image=caret_down,
-        compound=tk.RIGHT
+        compound=tk.RIGHT,
+        activebackground="LIGHTGREY"
     )
     optionRight.grid(column=2, row=0, padx=0, pady=10)
 
@@ -93,8 +95,11 @@ def guiMain():
     rightLabelField.config(state=tk.DISABLED)
     rightLabelField.grid(column=2, row=1, padx=10, pady=10)
 
-    enterButton = tk.Button(root, text="Enter", command=guiEval)
+    enterButton = tk.Button(root, text="Umrechnen!", command=guiEval)
     enterButton.grid(column=1, row=3, padx=0, pady=10)
+    enterButton.config(
+        activebackground="LIGHTGREY"
+    )
 
     root.mainloop()
 
