@@ -16,6 +16,8 @@ def guiMain():
         "Hexadezimal"
     ]
 
+    caret_down = tk.PhotoImage(file="arrow-down.png")
+
 
     def guiEval():
         rightLabelField.config(state=tk.NORMAL)
@@ -66,12 +68,22 @@ def guiMain():
     variableRight.set("Dezimal")
 
     optionLeft = tk.OptionMenu(root, variableLeft, *OPTIONS)
+    optionLeft.config(
+        indicatoron=0,
+        image=caret_down,
+        compound=tk.RIGHT
+    )
     optionLeft.grid(column=0, row=0, padx=0, pady=10)
 
     zuLabel = tk.Label(root, text="zu")
     zuLabel.grid(column=1, row=0)
 
     optionRight = tk.OptionMenu(root, variableRight, *OPTIONS)
+    optionRight.config(
+        indicatoron=0,
+        image=caret_down,
+        compound=tk.RIGHT
+    )
     optionRight.grid(column=2, row=0, padx=0, pady=10)
 
     leftLabelField = tk.Entry()
@@ -88,4 +100,6 @@ def guiMain():
 
 
 if __name__ == '__main__':
+    # caret_down Icon by flaticon.com, ty
+    # https://www.flaticon.com/free-icon/arrow-down_7030537?term=caret&page=1&position=2&origin=tag&related_id=7030537
     guiMain()
