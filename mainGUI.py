@@ -67,7 +67,8 @@ def guiMain():
 
     optionLeft = tk.OptionMenu(root, variableLeft, *OPTIONS)
     optionLeft.config(
-        activebackground="LIGHTGREY"
+        activebackground="LIGHTGREY",
+        width=10
     )
     optionLeft.grid(column=0, row=0, padx=0, pady=10)
 
@@ -76,7 +77,8 @@ def guiMain():
 
     optionRight = tk.OptionMenu(root, variableRight, *OPTIONS)
     optionRight.config(
-        activebackground="LIGHTGREY"
+        activebackground="LIGHTGREY",
+        width=10
     )
     optionRight.grid(column=2, row=0, padx=0, pady=10)
 
