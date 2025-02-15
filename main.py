@@ -99,6 +99,10 @@ def dec_to_bin(*args):
         endString = decToBinConv(dec)
         while len(endString.replace(" ", "")) % 4 != 0:
             endString = "0" + endString
+        if len(endString.replace(" ", "")) == 4:
+            endString = "0000 " + endString
+        elif len(endString.replace(" ", "")) % 8:
+            endString = "0000 " +endString
         return endString
     else:
         return "Ungültige Eingabe."
@@ -147,7 +151,7 @@ def hex_to_bin(*args):
             hexSub = hexStr[-1:]
             hexStr = hexStr[:-1]
             binNum = hexToBinConv(hexSub) + " " + binNum
-        if binNum.count(" ") % 2 != 0:
+        if len(binNum.replace(" ", "")) % 8:
             binNum = "0000 " + binNum
         return binNum
     else:
