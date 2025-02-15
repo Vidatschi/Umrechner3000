@@ -100,7 +100,7 @@ def dec_to_bin(*args):
         while len(endString.replace(" ", "")) % 4 != 0:
             endString = "0" + endString
         if len(endString.replace(" ", "")) == 4:
-            endString = "0000 " + endString
+            endString = "0000" + endString
         elif len(endString.replace(" ", "")) % 8:
             endString = "0000 " +endString
         return endString
