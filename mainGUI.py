@@ -4,7 +4,7 @@ import tkinter as tk
 
 def guiMain():
     root = tk.Tk()
-    root.geometry("400x150")
+    root.geometry("450x150")
     root.title("Umrechner3000 - Jetzt auch ohne Bugs!")
     root.columnconfigure(0, weight=1)
     root.columnconfigure(1, weight=1)
@@ -24,40 +24,9 @@ def guiMain():
         leftEntry = leftLabelField.get().replace(" ", "")
         if leftEntry == "":
             leftEntry = "0"
-
-        if source == "Binär":
-            if dest == "Hexadezimal":
-                rightLabelField.delete(0,"end")
-                rightLabelField.insert(0,c3k.bin_to_hex(leftEntry))
-            elif dest == "Dezimal":
-                rightLabelField.delete(0,"end")
-                rightLabelField.insert(0,c3k.bin_to_dec(leftEntry))
-            else:
-                rightLabelField.delete(0,"end")
-                rightLabelField.insert(0,"selbes System!")
-        elif source == "Dezimal":
-            if dest == "Hexadezimal":
-                rightLabelField.delete(0,"end")
-                rightLabelField.insert(0,c3k.bin_to_hex(c3k.dec_to_bin(leftEntry)))
-            elif dest == "Binär":
-                rightLabelField.delete(0,"end")
-                rightLabelField.insert(0,c3k.dec_to_bin(leftEntry))
-            else:
-                rightLabelField.delete(0,"end")
-                rightLabelField.insert(0,"selbes System!")
-        elif source == "Hexadezimal":
-            if dest == "Binär":
-                rightLabelField.delete(0,"end")
-                rightLabelField.insert(0,c3k.hex_to_bin(leftEntry))
-            elif dest == "Dezimal":
-                rightLabelField.delete(0,"end")
-                rightLabelField.insert(0,c3k.bin_to_dec(c3k.hex_to_bin(leftEntry)))
-            else:
-                rightLabelField.delete(0,"end")
-                rightLabelField.insert(0,"selbes System!")
-        else:
-            rightLabelField.delete(0,"end")
-            rightLabelField.insert(0,"selbes System!")
+        rightEntry = c3k.consoleMain(source, dest, leftEntry)
+        rightLabelField.delete(0,"end")
+        rightLabelField.insert(0,rightEntry)
         rightLabelField.config(state=tk.DISABLED)
 
     variableLeft = tk.StringVar(root)

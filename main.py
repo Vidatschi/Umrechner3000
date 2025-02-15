@@ -1,5 +1,5 @@
 def checkArgs(arg):
-    if not arg:
+    if not arg or arg[0] == None:
         return False
     return True
 
@@ -158,32 +158,40 @@ def hex_to_bin(*args):
         return "Ungültige Eingabe."
 
 
-def consoleMain():
-    source = input("Welches Zahlensystem wollen Sie konvertieren?: ").upper().strip()
-    dest = input("In welches Zahlensystem wollen Sie konvertieren?: ").upper().strip()
+def consoleMain(*args):
+    if checkArgs(args):
+        source = args[0].upper().strip()
+        dest = args[1].upper().strip()
+        inputVal = args[2]
+    else:
+        source = input("Welches Zahlensystem wollen Sie konvertieren?: ").upper().strip()
+        dest = input("In welches Zahlensystem wollen Sie konvertieren?: ").upper().strip()
+        inputVal = None
+    if source == dest:
+        return "gleiches System!"
     if source == "BINÄR" or source == "BIN":
         if dest == "HEXA" or dest == "HEX" or dest == "HEXADEZIMAL" or dest == "HEXADECIMAL":
-            print(bin_to_hex())
+            return(bin_to_hex(inputVal))
         elif dest == "DEZ" or dest == "DEC" or dest == "DEZIMAL":
-            print(bin_to_dec())
+            return(bin_to_dec(inputVal))
         else:
-            print("Bitte erneut versuchen.")
+            return("Bitte erneut versuchen.")
     elif source == "DEZ" or source == "DEC" or source == "DEZIMAL":
         if dest == "HEXA" or dest == "HEX" or dest == "HEXADEZIMAL" or dest == "HEXADECIMAL":
-            print(bin_to_hex(dec_to_bin()))
+            return(bin_to_hex(dec_to_bin(inputVal)))
         elif dest == "BINÄR" or dest == "BIN":
-            print(dec_to_bin())
+            return(dec_to_bin(inputVal))
         else:
-            print("Bitte erneut versuchen.")
+            return("Bitte erneut versuchen.")
     elif source == "HEXA" or source == "HEX" or source == "HEXADEZIMAL" or source == "HEXADECIMAL":
         if dest == "BINÄR" or dest == "BIN":
-            print(hex_to_bin())
+            return(hex_to_bin(inputVal))
         elif dest == "DEZ" or dest == "DEC" or dest == "DEZIMAL":
-            print(bin_to_dec(hex_to_bin()))
+            return(bin_to_dec(hex_to_bin(inputVal)))
         else:
-            print("Bitte erneut versuchen.")
+            return("Bitte erneut versuchen.")
     else:
-        print("Bitte erneut versuchen.")
+        return("Bitte erneut versuchen.")
 
 
 if __name__ == '__main__':
@@ -191,4 +199,4 @@ if __name__ == '__main__':
     # print(bin_to_dec())
     # print(bin_to_hex())
     # print(hex_to_bin())
-    consoleMain()
+    print(consoleMain())
